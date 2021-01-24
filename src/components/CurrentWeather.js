@@ -30,7 +30,7 @@ componentDidUpdate(prevProps) {
         const axios = require("axios");
     // axios.get("http://api.openweathermap.org/data/2.5/weather?q="+this.props.cityName+"&units=metric&appid=22bb908a62aaedc4f1b825ccdd1a0b3b").
     if(this.flag) {
-    axios.get("http://api.openweathermap.org/data/2.5/weather?q="+this.props.cityName+"&units=metric&appid=70524abc9c79a3fcaccc882ea4e7e594").
+    axios.get("https://api.openweathermap.org/data/2.5/weather?q="+this.props.cityName+"&units=metric&appid=70524abc9c79a3fcaccc882ea4e7e594").
 
     then((response)=>{
         this.flag=false;

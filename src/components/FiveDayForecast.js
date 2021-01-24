@@ -119,7 +119,7 @@ class FiveDayForecast extends React.Component {
         const axios = require("axios");
         if(this.flag){
         //this.flag=false;
-        axios.get("http://api.openweathermap.org/data/2.5/forecast?q="+this.props.cityName+"&units=metric&appid=70524abc9c79a3fcaccc882ea4e7e594").
+        axios.get("https://api.openweathermap.org/data/2.5/forecast?q="+this.props.cityName+"&units=metric&appid=70524abc9c79a3fcaccc882ea4e7e594").
         then((response)=>{
             this.flag=false;
             console.log(response);
