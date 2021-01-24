@@ -1,0 +1,46 @@
+#form-container {
+    display:flex;
+    justify-content: center;
+    margin-top:2rem;
+}
+
+#searchCity {
+    width:30%;
+    margin-right:1rem;
+}
+
+#searchSubmit {
+    width: 10%;
+    background:#020246;
+    border:#020246 2px solid;
+    transition: all 0.25s;
+    color:white;
+}
+
+#searchSubmit:hover {
+    background:white;
+    color:#020246;
+    cursor:pointer;
+}
+#searchCity:active, #searchCity:focus{
+    outline: none;
+}
+
+@media (min-width: 0px) and (max-width: 766px) {
+    #searchSubmit {
+        position:absolute;
+        left:-9999px;
+    }
+
+    #searchCity{
+        width:100%;
+        border-radius:50rem;
+        border:white;
+        padding:0.2rem;
+
+    }
+
+    #searchCity:active, #searchCity:focus{
+        outline: none;
+    }
+}

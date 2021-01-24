@@ -1,0 +1,38 @@
+.day_card {
+    width:10rem;
+    background:white;
+    margin: 2rem 0;
+    height:12rem; 
+    text-align:center;
+}
+
+.temp_type {
+    margin: 0 0 0.5rem 0;
+}
+
+.temp_degrees {
+    margin:0
+}
+
+.fiveDayForecast_container {
+    display:flex; 
+    justify-content:space-between
+}
+
+#weatherImage {
+    width:50px;
+    height:50px;
+}
+
+@media (min-width:0px) and (max-width:766px) {
+    #weatherImage {
+        width:35px;
+        height:35px;
+    }
+
+    .day_card{
+        font-size: 0.75rem;
+        height:8.5rem;
+        margin-top:1rem;
+    }
+}
