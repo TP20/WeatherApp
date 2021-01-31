@@ -32,7 +32,7 @@ class SearchCityInput extends React.Component {
             <form onSubmit = {this.searchCity}>
                 <div id="form-container">
                 <input type="text" id="searchCity" onChange={this.handleChange} />
-                <input id="searchSubmit" type="submit" />
+                <input id="searchSubmit" value="Submit" type="submit" />
                 </div>
             </form>
         )

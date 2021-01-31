@@ -2,6 +2,10 @@
     margin : 0;
 }
 
+#currentWeather_data {
+    display:flex;
+}
+
 #currentWeather_container {
     display:flex;
     justify-content:center;
@@ -10,10 +14,11 @@
 #currentWeather_box {
     display: flex;
     width: 100%; 
-    height: 15rem;
+    height: 17rem;
     border-radius: 1rem;
     background-color: white;
     position: relative;
+    font-size: 1.4rem;
 }
 
 #currentWeather_header {
@@ -37,6 +42,7 @@
     margin-left: 15%;
     align-items: center;
     justify-content: center;
+    width:20rem;
 }
 
 #currentWeather_list_container {
@@ -67,8 +73,17 @@
         width:50px;
     }
 
+    #currentWeather_data{
+        margin-left:1.5rem;
+    }
+
     #currentWeather_box {
-        height:7rem;
+        height: 10rem;
+        font-size: 2rem;
+        display: flex;
+        flex-direction:column;
+        background: rgba(255,255,255,0.4);
+        color:white;
     }
 
     #currentWeather_desc_container{
@@ -80,10 +95,11 @@
     }
 
     .currentWeather_list_item{
-        font-size:0.7rem
+        font-size: 0.9rem;
     }
 
     #currentWeather_header {
-        font-size:0.8rem;
+        font-size: 1.0rem;
+        margin-bottom:0;
     }
 }

@@ -1,6 +1,6 @@
 import React from 'react'
 import { BrowserRouter, Route, Switch,Link,withRouter,useHistory } from 'react-router-dom';
-
+import "./HomePage.css"
 
 class AxiosTest extends React.Component {
     
@@ -136,10 +136,9 @@ class AxiosTest extends React.Component {
     render(){
         return (
             <div>                
-                <p> Weather API Test</p>
-                <form onSubmit={this.submitQuery}>
+                <form id="searchForm" onSubmit={this.submitQuery}>
                     <input type="text" placeholder="Enter City Name" onChange={this.handleInputChange} />
-                    <button type="submit">Submit </button>
+                    <button id="submitButton" type="submit">Submit </button>
                     {this.displayWeather(this.state.city)}
                 </form>
                 

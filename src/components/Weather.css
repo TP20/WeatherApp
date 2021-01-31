@@ -1,0 +1,11 @@
+.weather-container{
+    width:80%
+}
+
+@media (min-width:0px) and (max-width:766px) {
+    .weather-container{
+        width: 95%;
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
+    }
+}

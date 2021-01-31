@@ -2,6 +2,7 @@ import React from 'react'
 import CurrentWeather from "./CurrentWeather"
 import FiveDayForecast from"./FiveDayForecast"
 import SearchCityInput from "./SearchCity"
+import "./Weather.css"
 
 class Weather extends React.Component {
     constructor(props) {
@@ -25,7 +26,7 @@ class Weather extends React.Component {
     }
 
     componentDidMount() {
-        document.body.style.zoom = "125%";
+        
         if(this.props.location.state.city !== null){
             this.setState((state)=>{
                 return{city2:this.props.location.state.city}
@@ -74,7 +75,7 @@ class Weather extends React.Component {
             
             <div style={{display:"flex", justifyContent:"center"}}>
            
-                <div style={{width:"80%"}}>
+                <div class="weather-container">
                 <div>
                     <SearchCityInput callBackTest={this.changeText}/>
                     <h1 style={{color:"white"}}>{this.state.city2}</h1>

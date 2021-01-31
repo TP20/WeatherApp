@@ -1,0 +1,25 @@
+#searchForm{
+    position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+
+}
+
+#submitButton {
+    background:#020246;
+    border:#020246 1px solid;
+    transition: ease-in 0.25s;
+    color:white;
+    margin-left:1rem;
+}
+
+#submitButton:hover {
+    background:white;
+    border: #020246 1px solid;
+    color:#020246;
+    cursor:pointer;
+
+}
+

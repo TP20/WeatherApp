@@ -15,6 +15,7 @@
     border:#020246 2px solid;
     transition: all 0.25s;
     color:white;
+    font-size: 1.5rem;
 }
 
 #searchSubmit:hover {
@@ -36,8 +37,10 @@
         width:100%;
         border-radius:50rem;
         border:white;
-        padding:0.2rem;
-
+        padding-right: 20px;
+        padding-left: 20px;
+        height: 1.5rem;
+        margin-right:0;
     }
 
     #searchCity:active, #searchCity:focus{

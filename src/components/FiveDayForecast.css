@@ -1,9 +1,10 @@
 .day_card {
-    width:10rem;
-    background:white;
+    width: 12rem;
+    background: white;
     margin: 2rem 0;
-    height:12rem; 
-    text-align:center;
+    height: 14rem;
+    text-align: center;
+    font-size: 1.2rem;
 }
 
 .temp_type {
@@ -30,9 +31,24 @@
         height:35px;
     }
 
+    
+
     .day_card{
-        font-size: 0.75rem;
-        height:8.5rem;
-        margin-top:1rem;
+        font-size: 1rem;
+        height: 8.5rem;
+        /* margin-top: 1rem; */
+        display: flex;
+        height: 100%;
+        padding: 0;
+        justify-content: space-around;
+        align-items: center;
+        margin: 0.1rem 0;
+        width: 100%;
+        background: rgba(255,255,255,0.4);
+        color:white;
+    }
+
+    .fiveDayForecast_container {
+    flex-direction: column;
     }
 }

@@ -95,6 +95,7 @@ render() {
          <div>
          <p id="currentWeather_header">Current Conditions</p>
          </div>
+         <div id="currentWeather_data">
          <div id="currentWeather_image_container">
              <img className="currentWeatherImage" src={Snow} />
          </div>
@@ -106,6 +107,7 @@ render() {
              <li className="currentWeather_list_item"> Wind Speed: {this.state.windSpeed}</li>
              </ul>
 
+         </div>
          </div>
          
         </div>
