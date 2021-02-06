@@ -75,7 +75,7 @@ class Weather extends React.Component {
             
             <div style={{display:"flex", justifyContent:"center"}}>
            
-                <div class="weather-container">
+                <div className="weather-container">
                 <div>
                     <SearchCityInput callBackTest={this.changeText}/>
                     <h1 style={{color:"white"}}>{this.state.city2}</h1>

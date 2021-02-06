@@ -1,10 +1,11 @@
 import { render } from '@testing-library/react';
 import React from 'react'
-import Sun from "./Images/sunTransparent.png"
-import Clouds from "./Images/clouds.png"
+import Sun from "./Images/sun.png"
+import Clouds from "./Images/cloud.png"
 import Rain from "./Images/rain.png"
 import Thunder from "./Images/thunder.png"
 import Snow from "./Images/snow.png"
+
 import "./CurrentWeather.css"
 
 class CurrentWeather extends React.Component {
@@ -14,8 +15,22 @@ class CurrentWeather extends React.Component {
             cityName:"",
             temp:"",
             humidity:"",
-            windSpeed:""
+            windSpeed:"",
+            weather:""
         }
+
+        this.imageMapCurrent = {
+            "Clouds":Clouds,
+            "Rain":Rain,
+            "Snow":Snow,
+            "Thunderstorm":Thunder,
+            "Drizzle": Rain,
+            "Clear":Sun
+        }
+
+        this.weatherImageCurrent = this.weatherImageCurrent.bind(this)
+
+
         this.flag=true;
     }
 /*
@@ -34,13 +49,15 @@ componentDidUpdate(prevProps) {
 
     then((response)=>{
         this.flag=false;
-    
+       //     console.log("Current Weather "+response.data.weather[0].main);
+            //response.data.weather.main
             this.setState((state)=>{
                 return{
                     cityName:this.props.cityName,
                     temp:response.data.main.temp,
                     humidity:response.data.main.temp,
-                    windSpeed:response.data.wind.speed
+                    windSpeed:response.data.wind.speed,
+                    weather:response.data.weather[0].main
                 }
             })
         
@@ -60,19 +77,22 @@ componentDidUpdate(prevProps) {
 componentDidMount() {
    const axios = require("axios");
    // axios.get("http://api.openweathermap.org/data/2.5/weather?q="+this.props.cityName+"&units=metric&appid=22bb908a62aaedc4f1b825ccdd1a0b3b").
-   axios.get("http://api.openweathermap.org/data/2.5/weather?q="+this.props.cityName+"&units=metric&appid=70524abc9c79a3fcaccc882ea4e7e594").
+   axios.get("https://api.openweathermap.org/data/2.5/weather?q="+this.props.cityName+"&units=metric&appid=70524abc9c79a3fcaccc882ea4e7e594").
 
    then((response)=>{
-  
+  if(this.flag) {
+      this.flag=false;
         this.setState((state)=>{
             return{
                 cityName:this.props.cityName,
                 temp:response.data.main.temp,
                 humidity:response.data.main.temp,
-                windSpeed:response.data.wind.speed
+                windSpeed:response.data.wind.speed,
+                weather:response.data.weather[0].main
+                
             }
         })
-    
+  }
     }).
     catch((error)=>{
         console.log(error);
@@ -81,8 +101,17 @@ componentDidMount() {
     }).
     then(()=>{
 
+        this.flag=true;
     })
 
+}
+
+weatherImageCurrent = (k) => {
+    //const c = Sun;
+   // console.log("this is the key"+k)
+    return <img className="currentWeatherImage" src={this.imageMapCurrent[k]} />
+    
+    
 }
 
 
@@ -97,7 +126,7 @@ render() {
          </div>
          <div id="currentWeather_data">
          <div id="currentWeather_image_container">
-             <img className="currentWeatherImage" src={Snow} />
+             {this.weatherImageCurrent(this.state.weather)} 
          </div>
          <div id="currentWeather_desc_container">
         

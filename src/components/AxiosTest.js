@@ -1,6 +1,7 @@
 import React from 'react'
 import { BrowserRouter, Route, Switch,Link,withRouter,useHistory } from 'react-router-dom';
 import "./HomePage.css"
+import Logo from "./Images/logoupdate.png"
 
 class AxiosTest extends React.Component {
     
@@ -30,44 +31,7 @@ class AxiosTest extends React.Component {
 
 
     componentDidMount() {
-     /*   const axios = require('axios');
-
-        console.log(this.c)
-        axios.get("http://api.openweathermap.org/data/2.5/forecast?q=Toronto&units=metric&appid=22bb908a62aaedc4f1b825ccdd1a0b3b")
-        .then( (response) => {
-            console.log(response);
-           console.log(this.c)
-            response.data.list.map((date,index)=>{
-            
-            return(
-                parseInt(date.dt_txt.substring(11,13))>12?
-            
-                        (!this.c.hasOwnProperty(this.dateMap[new Date(date.dt*1000).getDay()])?
-                            (this.c[this.dateMap[new Date(date.dt*1000).getDay()]] = {"day":this.dateMap[new Date(date.dt*1000).getDay()],"weather":date.weather[0].main,"temp":date.main.temp}):
-                        ""
-                        )
-                        :
-                    
-                    console.log("")                    
-            )
-           }) 
-
-          
-
-
-          })
-          .catch(function (error) {
-            console.log("Something went wrong")
-            console.log(error);
-          })
-          .then( () => {
-              console.log(this.c.length)
-
-              for(var key in this.c) {
-                  console.log(this.c[key])
-              }
-         
-          }); */
+     
     
     }
 
@@ -135,10 +99,11 @@ class AxiosTest extends React.Component {
 
     render(){
         return (
-            <div>                
+            <div id="searchContainer" > 
+            <img src= {Logo}  id="logoPic"/>
                 <form id="searchForm" onSubmit={this.submitQuery}>
-                    <input type="text" placeholder="Enter City Name" onChange={this.handleInputChange} />
-                    <button id="submitButton" type="submit">Submit </button>
+                    <input id="cityInput" type="text" placeholder="Enter City Name" onChange={this.handleInputChange} />
+                    <button id="submitButton" type="submit">Search </button>
                     {this.displayWeather(this.state.city)}
                 </form>
                 

@@ -1,10 +1,12 @@
 .day_card {
     width: 12rem;
-    background: white;
+    border-radius: 1rem;
+    color: white;
     margin: 2rem 0;
     height: 14rem;
     text-align: center;
     font-size: 1.2rem;
+    background: rgba(255,255,255,0.4);
 }
 
 .temp_type {
