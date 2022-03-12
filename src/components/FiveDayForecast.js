@@ -6,12 +6,14 @@ import Rain from "./Images/rain.png"
 import Thunder from "./Images/thunder.png"
 import Snow from "./Images/snow.png"
 import "./FiveDayForecast.css"
-
+const initialState = {
+    /* etc */
+};
 class FiveDayForecast extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-        };
+        this.state = initialState;
+        this.basestate = this.state
         this.c= {};
         this.flag=true;
         
@@ -84,6 +86,7 @@ class FiveDayForecast extends React.Component {
         }).
             catch((error)=>{
                 console.log("Something went wrong")
+                console.log(error)
             }).then(()=>{
                 var c="";
                 this.flag=true;
@@ -100,32 +103,44 @@ class FiveDayForecast extends React.Component {
     }
 
     componentDidUpdate(prevProps) {
-        
+        var errorFlag=false;
         if (prevProps.cityName !== this.props.cityName) {
             console.log("city is different")
+         
             const axios = require("axios");
         if(this.flag){
         axios.get("https://api.openweathermap.org/data/2.5/forecast?q="+this.props.cityName+"&units=metric&appid=70524abc9c79a3fcaccc882ea4e7e594").
         then((response)=>{
             this.flag=false;
+            console.log(this.state)
             console.log(response);
          ///   console.log(response);
             response.data.list.map((date,index)=>{
+                console.log(date.dt_text)
          //       console.log("this is the date:"+this.dateMap[new Date(date.dt*1000).getDay()]);
             let dayTest = this.dateMap[new Date(date.dt*1000).getDay()];
+        //    console.log(this.dateMap[new Date(date.dt*1000).getDay()] +":"+ date.weather[0].main+":"+date.main.temp)
 
             return(
                 
                 parseInt(date.dt_txt.substring(11,13))>12?
+
+                this.setState((state)=>{
+                    return {
+                //        console.log(this.dateMap[new Date(date.dt*1000).getDay()] +":"+ date.weather[0].main+":"+date.main.temp),
+                        [this.dateMap[new Date(date.dt*1000).getDay()]]:{weather:date.weather[0].main,temp:date.main.temp}
+                    }
+                }) 
                     //console.log("Inside Loop")
-                          (!this.state.hasOwnProperty(this.dateMap[new Date(date.dt*1000).getDay()]) && Object.keys(this.state).length<5?
-                            this.setState((state)=>{
+                     //     (!this.state.hasOwnProperty(this.dateMap[new Date(date.dt*1000).getDay()]) && Object.keys(this.state).length<5?
+               /*      (this.state.hasOwnProperty(this.dateMap[new Date(date.dt*1000).getDay()])?
+                        
+                          this.setState((state)=>{
                                 return {
                                     [this.dateMap[new Date(date.dt*1000).getDay()]]:{weather:date.weather[0].main,temp:date.main.temp}
                                 }
                             })
                             : (Object.keys(this.state).length==5) ?
-                               // console.log("In condition")
                                 this.setState((state)=>{
                                     return {
                                       //  [this.dateMap[new Date(date.dt*1000).getDay()]]:{weather:date.weather[0].main,temp:date.main.temp}
@@ -134,28 +149,41 @@ class FiveDayForecast extends React.Component {
                                     }
                                 })                          
                             :
-                            ""
+                           this.setState((state)=>{
+                            return {
+                        //        console.log(this.dateMap[new Date(date.dt*1000).getDay()] +":"+ date.weather[0].main+":"+date.main.temp),
+                                [this.dateMap[new Date(date.dt*1000).getDay()]]:{weather:date.weather[0].main,temp:date.main.temp}
+                            }
+                        }) 
+
                             /*Object.keys(this.state).map((key) =>{
                                 console.log(key);
                             })*/
                             //console.log(Object.keys(this.state).length)
                              //   console.log("Length not 5")
-                         )
-                        ://outer
+                 //        )
+                   //     ://outer
                     
-                    ""                  
+                  //  ""  */  
+                  :""              
             )
 
         })
     }).
         catch((error)=>{
-            console.log("Something went wrong")
-        }).then(()=>{
+            console.log("Something went wrong");
+            //console.log(error);
+            
+                  }).then(()=>{
             var c="";
+            console.log(this.state);
             this.flag=true;
+           
            Object.keys(this.state).map((key)=>{
                 console.log("City "+this.props.cityName+" date "+key+" Weather "+this.state[key].weather+ " Temp "+this.state[key].temp);
              })
+             
+            
 
         })
 
@@ -189,7 +217,7 @@ class FiveDayForecast extends React.Component {
 
                 parseInt(date.dt_txt.substring(11,13))>12?
                     //console.log("Inside Loop")
-                          (!this.state.hasOwnProperty(this.dateMap[new Date(date.dt*1000).getDay()]) && Object.keys(this.state).length<5?
+                          (!this.state.hasOwnProperty(this.dateMap[new Date(date.dt*1000).getDay()]) && Object.keys(this.state).length<4?
                           this.setState((state)=>{
                               return {
                                 [this.dateMap[new Date(date.dt*1000).getDay()]]:{weather:date.weather[0].main,temp:date.main.temp}

@@ -6,6 +6,7 @@ import CurrentWeather from "./components/CurrentWeather"
 import Weather from "./components/Weather"
 import FiveDayForecast from "./components/FiveDayForecast"
 import SearchCityInput from "./components/SearchCity"
+import News from "./components/News"
 import { BrowserRouter, Route, Switch,Link } from 'react-router-dom';
 
 
@@ -41,11 +42,12 @@ class App extends React.Component {
 		
 		<BrowserRouter> 
     <Switch>
-             
-                <Route path="/searchCity" component={AxiosTest} />
-                <Route path="/weather" component={Weather} />
+              <Route path="/" component={AxiosTest}  exact />
+              {//  <Route path="/searchCity" component={AxiosTest} />
+  }             <Route style={{backgroundColor:"purple", marginBottom:"0"}} path="/weather" component={Weather} /> 
+                <Route path="/news" component={News} /> 
                 <Route path="/currentWeather" component={CurrentWeather} />
-                <Route path="/fiveDayForecast" component={FiveDayForecast} />
+                <Route style={{backgroundColor:"purple", marginBottom:"0"}} path="/fiveDayForecast" component={FiveDayForecast} />
                 <Route path="/search" component= {SearchCityInput} /> 
             </Switch>
 
